@@ -1,4 +1,4 @@
-import className from 'classnames/bind';
+import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -7,7 +7,7 @@ import Header from './Header';
 import styles from './Menu.module.scss';
 import { useState } from 'react';
 
-const cx = className.bind(styles);
+const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
 
@@ -23,7 +23,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
                 <MenuItem
                     key={index}
                     data={item}
-                    onCLick={() => {
+                    onClick={() => {
                         if (isParent) {
                             setHistory((prev) => [...prev, item.children]);
                         } else {
@@ -53,7 +53,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
